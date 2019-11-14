@@ -16,13 +16,13 @@ let films = [{
 ];
 
 function getMovies(req, res) {
-    res.send(films);
+    return films;
 }
 
 function getMovie(req, res) {
     var id = req.body.id;
     var film = films.find(movie => movie.ID === id);
-    return res.json(film);
+    return film;
 }
 
 function postMovie(req, res) {
@@ -38,14 +38,14 @@ function postMovie(req, res) {
 function putMovie(req, res) {
     var id = req.body.id;
     var film = films.find(movie => movie.ID === id);
-    return res.json(film);
+    return film;
 }
 
 function deleteMovie(req, res) {
     var id = req.body.id;
     var film = films.findIndex(movie => movie.ID == id);
     if (film >= 0) films.splice(film, 1);
-    res.send(films);
+    return films;
 }
 
 module.exports = {

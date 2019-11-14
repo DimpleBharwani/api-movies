@@ -3,13 +3,17 @@ const fs = require("fs");
 
 
 const express = require("express");
+const morgan = require('morgan');
 const app = express();
 
-const moviesRouter = require("./api/movies");
-
 app.use(express.json());
-app.use('/movies', moviesRouter);
+app.use(morgan('combined'));
 
+app.listen(3000, () => console.log('Ready on port 3000!'));
+
+
+const moviesRouter = require("./api/movies");
+app.use('/movies', moviesRouter);
 
 
 
@@ -41,6 +45,3 @@ function fillDB() {
 
 //APP START
 fillDB();
-
-
-app.listen(3000, () => console.log('Ready on port 3000!'));

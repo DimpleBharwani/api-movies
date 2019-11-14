@@ -2,8 +2,11 @@ const express = require("express");
 const router = express.Router();
 var controller = require('./controller')
 
-router.get('/', (req, res) => controller.getMovies(req, res));
-router.get('/:id', (req, res) => controller.getMovie(req, res));
+router.get('/', (req, res) => res.json(controller.getMovies()));
+router.get('/:id', (req, res) => res.json(controller.getMovie()));
+router.post('/', (req, res) => res.json(controller.postMovie()));
+router.delete('/', (req, res) => res.json(controller.deleteMovie()));
+router.put('/', (req, res) => res.json(controller.postMovie()));
 
 module.exports = router;
 
@@ -11,7 +14,7 @@ module.exports = router;
 
 //// create, read, update, delete
 
-////read
+////read    
 // router.get('/', (req, res) => {
 //     res.send(films);
 // });
